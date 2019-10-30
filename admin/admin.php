@@ -83,7 +83,7 @@ if(isset($_GET['page_layout'])){
 }else{
 	include_once('sub_admin.php');
 }	
-
+//*ANh Myx here
 ?>
 
 	<script src="js/jquery-1.11.1.min.js"></script>
