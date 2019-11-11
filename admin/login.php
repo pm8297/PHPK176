@@ -28,7 +28,12 @@ if(!defined('SECURITY')){
 	if(isset($_POST['sbm'])){
 		$mail = $_POST['mail'];
 		$pass = $_POST['pass'];
-		if($mail =='admin@gmail.com' && $pass == '123456'){
+
+		$sql = "SELECT * FROM user WHERE user_mail = '$mail' AND user_pass = '$pass'";
+		$query = mysqli_query($conn, $sql);
+		$row = mysqli_num_rows($query);
+		//if($mail =='admin@gmail.com' && $pass == '123456'){
+		if($row > 0){	
 			$_SESSION['mail'] = $mail;
 			$_SESSION['pass'] = $pass;
 			header('location:index.php');   //chuyển sang trang admin

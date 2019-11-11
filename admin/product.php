@@ -1,4 +1,46 @@
+<?php
+if(!defined('SECURITY')){
+	die('Bạn không có quyền truy cập vào web này !');
+}
+//TODO Phân trang
+if(isset($_GET['page'])){
+    $page = $_GET['page'];
+}else{
+    $page = 1;
+}
+// gán số trang cần hiển thị
+$rows_per_page = 5;
+// dùng công thức
+$per_row = $page*$rows_per_page-$rows_per_page;
+//truy vấn
+$total_rows = mysqli_num_rows(mysqli_query($conn, "SELECT * FROM product"));
+$total_pages = ceil($total_rows/$rows_per_page);
+// code nút pre page
+$list_pages = '';
+$page_prev = $page -1;
 
+if($page_prev <= 0){
+    $page_prev = 1;
+}
+$list_pages .= ' <li class="page-item"><a class="page-link" href="index.php?page_layout=product&page='.$page_prev.'">&laquo;</a></li>';
+//tính toán số trang
+for($i = 1; $i <= $total_pages; $i++){
+    if($i == $page){
+        $active = 'active';
+    }else{
+        $active = '';
+    }
+    $list_pages .= ' <li class="page-item '.$active.'"><a class="page-link" href="index.php?page_layout=product&page='.$i.'">'.$i.'</a></li>';
+}
+// code nút next
+$page_next = $page + 1;
+
+if($page_next > $total_pages){
+    $page_next = $total_pages;
+}
+$list_pages .= ' <li class="page-item"><a class="page-link" href="index.php?page_layout=product&page='.$page_next.'">&raquo;</a></li>';
+
+?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
@@ -38,41 +80,35 @@
 						    </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                    //list ra danh sách sản phẩm
+                                    $sql = "SELECT * FROM product INNER JOIN category ON product.cat_id = category.cat_id ORDER BY prd_id DESC LIMIT $per_row,$rows_per_page";
+                                    $query = mysqli_query($conn,$sql);
+                                    while($row = mysqli_fetch_assoc($query)){
+                                        
+                                ?>
                                     <tr>
-                                        <td style="">1</td>
-                                        <td style="">Sản phẩm số 1</td>
-                                        <td style="">18.500.000 vnd</td>
-                                        <td style="text-align: center"><img width="130" height="180" src="img/download.jpeg" /></td>
-                                        <td><span class="label label-success">Còn hàng</span></td>
-                                        <td>Danh mục số 1</td>
+                                        <td style=""> <?php echo $row['prd_id']; ?></td>
+                                        <td style=""> <?php echo $row['prd_name']; ?></td>
+                                        <td style=""><?php echo $row['prd_price']; ?></td>
+                                        <td style="text-align: center"><img width="130" height="180" src="img/products/<?php echo $row['prd_image']; ?>" /></td>
+                                        <td><span class="label <?php if($row['prd_status'] == 1){echo 'label-success';} else{ echo 'label-danger';} ?>"><?php if($row['prd_status'] == 1){echo 'Còn hàng';} else{ echo 'Hết hàng';} ?></span></td>
+                                        <td><?php echo $row['cat_name']; ?></td>
                                         <td class="form-group">
                                             <a href="product-edit.html" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
                                             <a href="product-edit.html" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                            <td style="">1</td>
-                                            <td style="">Sản phẩm số 2</td>
-                                            <td style="">18.500.000 vnd</td>
-                                            <td style="text-align: center"><img width="130" height="180" src="img/download.jpeg" /></td>
-                                            <td><span class="label label-danger">Hết hàng</span></td>
-                                            <td>Danh mục số 1</td>
-                                            <td class="form-group">
-                                                <a href="product-edit.html" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
-                                                <a href="product-edit.html" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                                            </td>
-                                        </tr>
+                                    <?php } ?>
                                  </tbody>
 						</table>
                     </div>
                     <div class="panel-footer">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                <?php                            
+                                    echo $list_pages;
+                                ?>
                             </ul>
                         </nav>
                     </div>

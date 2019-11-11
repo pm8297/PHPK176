@@ -34,6 +34,13 @@
 									</tr>
 									</thead>
 									<tbody>
+										<?php
+										//list ra danh sách sản phẩm
+										$sql = "SELECT * FROM product INNER JOIN category ON product.cat_id = category.cat_id ORDER BY prd_id DESC";
+										$query = mysqli_query($conn,$sql);
+										while($row = mysqli_fetch_assoc($query)){
+
+										?>
 										<tr>
 											<td style="">1</td>
 											<td style="">Danh mục 1</td>
@@ -42,14 +49,7 @@
 												<a href="/" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
 											</td>
 										</tr>
-										<tr>
-											<td style="">2</td>
-											<td style="">Danh mục 2</td>
-											<td class="form-group">
-												<a href="/" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
-												<a href="/" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-											</td>
-										</tr>
+										 <?php } ?>
 									</tbody>
 								</table>
 							</div>

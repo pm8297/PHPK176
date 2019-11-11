@@ -36,6 +36,9 @@
 						    </tr>
                             </thead>
                             <tbody>
+                                <?php 
+
+                                ?>
                                 <tr>
                                     <td style="">1</td>
                                     <td style="">Admin</td>
@@ -46,16 +49,7 @@
                                         <a href="/" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                                     </td>
                                 </tr>
-                                <tr>
-                                        <td style="">2</td>
-                                        <td style="">Nguyễn Văn A</td>
-                                        <td style="">nguyenvana@gmail.com</td>
-                                        <td><span class="label label-warning">Member</span></td>
-                                        <td class="form-group">
-                                            <a href="thanhvien-edit.html" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
-                                            <a href="/" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
-                                        </td>
-                                    </tr>
+                               <?php } ?>
                             </tbody>
 						</table>
                     </div>
