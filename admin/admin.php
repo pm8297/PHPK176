@@ -74,16 +74,16 @@ if(isset($_GET['page_layout'])){
 	switch($_GET['page_layout']){
 	//*user
 	case 'user'         : include_once('user.php');  		break;
-	case 'add_user'     : include_once('add_user');  		break;
-	case 'edit_user'    : include_once('edit_user'); 		break;	
+	case 'add_user'     : include_once('add_user.php');  		break;
+	case 'edit_user'    : include_once('edit_user.php'); 		break;	
 	//*category
 	case 'category'     : include_once('category.php');  	break;
-	case 'add_category' : include_once('add_category');  	break;
-	case 'edit_category': include_once('edit_category'); 	break;	
+	case 'add_category' : include_once('add_category.php');  	break;
+	case 'edit_category': include_once('edit_category.php'); 	break;	
 	//*product
 	case 'product'      : include_once('product.php');  	break;
-	case 'add_product'  : include_once('add_product');  	break;
-	case 'edit_product' : include_once('edit_product'); 	break;
+	case 'add_product'  : include_once('add_product.php');  	break;
+	case 'edit_product' : include_once('edit_product.php'); 	break;
 	}
 }else{
 	include_once('sub_admin.php');

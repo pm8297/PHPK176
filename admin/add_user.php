@@ -1,4 +1,20 @@
+<?php
+if(!defined('SECURITY')){
+	die('Bạn không có quyền truy cập vào web này !');
+}
+//* Kiểm tra form submit
 
+if(isset($_POST['sbm'])){
+    $user_full = $_POST['user_full'] ;
+    $user_mail = $_POST['user_mail'] ;
+    $user_pass = $_POST['user_pass'] ;
+    $user_re_pass = $_POST['user_re_pass'] ;
+     //* đưa vào database
+     $sql = "INSERT INTO user(user_full,user_mail,user_pass,user_re_pass) VALUES('$user_full','$user_mail','$user_pass','$user_re_pass')";
+     $query = mysqli_query($conn, $sql);
+     header('location: index.php?page_layout=user');
+}
+?>
 		
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">			
 		<div class="row">
