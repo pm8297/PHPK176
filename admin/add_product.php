@@ -60,31 +60,31 @@ if(isset($_POST['sbm'])){
                         <div class="panel-body">
                             <div class="col-md-6">
                                 <form role="form" method="post" enctype="multipart/form-data">
-                                <div class="form-group">
-                                    <label>Tên sản phẩm</label>
-                                    <input required name="prd_name" class="form-control" placeholder="">
-                                </div>
-                                                                
-                                <div class="form-group">
-                                    <label>Giá sản phẩm</label>
-                                    <input required name="prd_price" type="number" min="0" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label>Bảo hành</label>
-                                    <input required name="prd_warranty" type="text" class="form-control">
-                                </div>    
-                                <div class="form-group">
-                                    <label>Phụ kiện</label>
-                                    <input required name="prd_accessories" type="text" class="form-control">
-                                </div>                  
-                                <div class="form-group">
-                                    <label>Khuyến mãi</label>
-                                    <input required name="prd_promotion" type="text" class="form-control">
-                                </div>  
-                                <div class="form-group">
-                                    <label>Tình trạng</label>
-                                    <input required name="prd_new" type="text" class="form-control">
-                                </div>  
+                                    <div class="form-group">
+                                        <label>Tên sản phẩm</label>
+                                        <input required name="prd_name" class="form-control" placeholder="">
+                                    </div>
+                                                                    
+                                    <div class="form-group">
+                                        <label>Giá sản phẩm</label>
+                                        <input required name="prd_price" type="number" min="0" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Bảo hành</label>
+                                        <input required name="prd_warranty" type="text" class="form-control">
+                                    </div>    
+                                    <div class="form-group">
+                                        <label>Phụ kiện</label>
+                                        <input required name="prd_accessories" type="text" class="form-control">
+                                    </div>                  
+                                    <div class="form-group">
+                                        <label>Khuyến mãi</label>
+                                        <input required name="prd_promotion" type="text" class="form-control">
+                                    </div>  
+                                    <div class="form-group">
+                                        <label>Tình trạng</label>
+                                        <input required name="prd_new" type="text" class="form-control">
+                                    </div>  
                                 
                             </div>
                             <div class="col-md-6">

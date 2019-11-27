@@ -88,8 +88,8 @@ $list_pages .= ' <li class="page-item"><a class="page-link" href="index.php?page
                                     <td style=""><?php echo $row['user_mail']; ?></td>
                                     <td><span class="label <?php if($row['user_level'] == 1){echo 'label-danger';} else{ echo 'label-success';} ?>"><?php if($row['user_level'] == 1){echo 'Admin';} else{ echo 'Khách hàng';} ?></span></td>
                                     <td class="form-group">
-                                        <a href="thanhvien-edit.html" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
-                                        <a href="/" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                                        <a href="index.php?page_layout=edit_user&user_id=<?php echo $row['user_id']; ?>" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
+                                        <a href="del_user.php?user_id=<?php echo $row['user_id']; ?>" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
                                     </td>
                                 </tr>
                                <?php } ?>

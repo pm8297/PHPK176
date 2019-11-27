@@ -9,10 +9,19 @@ if(isset($_POST['sbm'])){
     $user_mail = $_POST['user_mail'] ;
     $user_pass = $_POST['user_pass'] ;
     $user_re_pass = $_POST['user_re_pass'] ;
-     //* đưa vào database
-     $sql = "INSERT INTO user(user_full,user_mail,user_pass,user_re_pass) VALUES('$user_full','$user_mail','$user_pass','$user_re_pass')";
+    $user_level = $_POST['user_level'];
+     //* Truy vấn danh mục sản phẩm
+     $sql_user = "SELECT * FROM user WHERE user_full='$user_full'";
+     $query_user = mysqli_query($conn, $sql_user);
+     $num_row = mysqli_num_rows($query_user);
+    //* đưa vào database
+    if ($num_row > 0 ){
+        $error = '<div class="alert alert-danger">Email đã tồn tại !</div>';
+    }else{  
+     $sql = "INSERT INTO user(user_full,user_mail,user_pass,user_level) VALUES('$user_full','$user_mail','$user_pass','$user_level')";
      $query = mysqli_query($conn, $sql);
      header('location: index.php?page_layout=user');
+    } 
 }
 ?>
 		
@@ -35,7 +44,7 @@ if(isset($_POST['sbm'])){
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="col-md-8">
-                            	<div class="alert alert-danger">Email đã tồn tại !</div>
+                            <?php if(isset($error)){echo $error;} ?>    
                                 <form role="form" method="post">
                                 <div class="form-group">
                                     <label>Họ & Tên</label>

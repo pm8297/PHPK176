@@ -70,7 +70,8 @@ body{
 	margin:0 -2.5px;}
 .product-item{
 	padding:10px;
-	margin:2.5px !important;}
+    margin: 0 0 10px;
+	}
 .product-item img{
 	width:130px;
 	height:180px;
@@ -143,4 +144,13 @@ body{
 		display:block;}
 	#header > button{
 		display:none;}
+}
+.product-list {
+    margin: 0 -5px;
+}
+.product-list [class*=col-] {
+    padding: 0 5px;
+}
+.product-list .product-item {
+    background: #fff;
 }
